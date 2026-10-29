@@ -7,11 +7,18 @@ import { colors, radius } from '../constants/theme';
 type GenerateButtonProps = {
   label: string;
   loading: boolean;
+  loadingLabel?: string;
   disabled?: boolean;
   onPress: () => void;
 };
 
-export function GenerateButton({ label, loading, disabled, onPress }: GenerateButtonProps) {
+export function GenerateButton({
+  label,
+  loading,
+  loadingLabel = 'Génération en cours...',
+  disabled,
+  onPress,
+}: GenerateButtonProps) {
   const [scale] = useState(() => new Animated.Value(1));
   const [spin] = useState(() => new Animated.Value(0));
 
@@ -53,7 +60,7 @@ export function GenerateButton({ label, loading, disabled, onPress }: GenerateBu
         ) : (
           <Ionicons name="sparkles" size={20} color={colors.text} />
         )}
-        <Text style={styles.label}>{loading ? 'Génération en cours...' : label}</Text>
+        <Text style={styles.label}>{loading ? loadingLabel : label}</Text>
         {loading ? <ActivityIndicator size="small" color={colors.mint} /> : null}
       </Pressable>
     </Animated.View>

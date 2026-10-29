@@ -4,9 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TabButton } from '../../components/tab-button';
-import { GENERATOR_TABS, type GeneratorConfig } from '../../constants/generators';
-import { colors, radius } from '../../constants/theme';
+import { TabButton } from '../../../components/tab-button';
+import { GENERATOR_TABS, type GeneratorConfig } from '../../../constants/generators';
+import { colors, radius } from '../../../constants/theme';
 
 export default function TabsLayout() {
   const insets = useSafeAreaInsets();

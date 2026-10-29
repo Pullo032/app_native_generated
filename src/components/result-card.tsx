@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { colors, radius } from '../constants/theme';
 
-export type ResultStatus = 'idle' | 'loading' | 'done';
+export type ResultStatus = 'idle' | 'loading' | 'done' | 'error';
 
 type ResultCardProps = {
   status: ResultStatus;
   emptyText: string;
   message?: string;
+  children?: ReactNode;
 };
 
-export function ResultCard({ status, emptyText, message }: ResultCardProps) {
+export function ResultCard({ status, emptyText, message, children }: ResultCardProps) {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -20,11 +21,16 @@ export function ResultCard({ status, emptyText, message }: ResultCardProps) {
         {status === 'done' ? (
           <Ionicons name="checkmark-circle" size={18} color={colors.primaryBright} />
         ) : null}
+        {status === 'error' ? (
+          <Ionicons name="alert-circle" size={18} color={colors.primaryBright} />
+        ) : null}
       </View>
 
       {status === 'idle' ? <Text style={styles.empty}>{emptyText}</Text> : null}
       {status === 'loading' ? <Shimmer /> : null}
-      {status === 'done' ? <Text style={styles.message}>{message}</Text> : null}
+      {status === 'done' || status === 'error'
+        ? (children ?? <Text style={styles.message}>{message}</Text>)
+        : null}
     </View>
   );
 }
