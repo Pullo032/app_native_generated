@@ -41,3 +41,8 @@ yarn-error.*
 /android
 AGENTS.md
 eas.json
+<<<<<<< HEAD
+=======
+*.claude
+.expo/
+>>>>>>> f1bdf2d5f387f3dd75a33772f1685ec3bd42618c
