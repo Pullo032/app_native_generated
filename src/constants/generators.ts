@@ -97,6 +97,15 @@ export const GENERATORS: Record<GeneratorType, GeneratorConfig> = {
   },
 };
 
+export type CaptureAction = 'text' | 'pdf' | 'translation' | 'reference';
+
+export const CAPTURE_ACTIONS: { id: CaptureAction; label: string }[] = [
+  { id: 'text', label: 'Texte' },
+  { id: 'pdf', label: 'PDF' },
+  { id: 'translation', label: 'Traduction' },
+  { id: 'reference', label: 'Référence de génération' },
+];
+
 export const GENERATOR_TABS: GeneratorConfig[] = [
   GENERATORS.text,
   GENERATORS.photo,
